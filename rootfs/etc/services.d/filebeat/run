@@ -4,10 +4,6 @@
 #  Run filebeat
 #
 ###############################################
-cd /etc/filebeat || exit 1
-
-filebeat modules enable elasticsearch
-
-filebeat -e --setup
-
-exec filebeat
+FB_PATH=/usr/local/filebeat-"${FB_VERSION}"-linux-x86_64
+chmod +x "${FB_PATH}"/filebeat
+exec "${FB_PATH}"/filebeat

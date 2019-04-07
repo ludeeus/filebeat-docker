@@ -7,12 +7,17 @@ COPY rootfs /
 # ENV
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 ENV FB_VERSION='6.7.1'
+ENV FB_PATH=/usr/local/filebeat-"${FB_VERSION}"-linux-x86_64
+
+# Add aloine 'edge/testing'
+RUN echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 
 # Install packages
 RUN apk add --no-cache \
     apk-tools=2.10.3-r1 \
     bash=4.4.19-r1 \
     curl=7.64.0-r1 \
+    filebeat@edge \
     \
     && rm -f -r /tmp/* \
     \

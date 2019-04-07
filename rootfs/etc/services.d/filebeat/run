@@ -4,6 +4,4 @@
 #  Run filebeat
 #
 ###############################################
-FB_PATH=/usr/local/filebeat-"${FB_VERSION}"-linux-x86_64
-chmod +x "${FB_PATH}"/filebeat
-exec "${FB_PATH}"/filebeat
+exec filebeat -e -c /etc/filebeat/filebeat.yml -path.home "${FB_PATH}"

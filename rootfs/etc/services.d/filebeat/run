@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+###############################################
+#
+#  Run filebeat
+#
+###############################################
+cd /etc/filebeat || exit 1
+
+filebeat modules enable elasticsearch
+
+filebeat -e --setup
+
+exec filebeat
